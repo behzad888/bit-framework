@@ -25,6 +25,7 @@ namespace Bit.IdentityServer
         public virtual IEventService EventService { get; set; }
         public virtual IEnumerable<IExternalIdentityProviderConfiguration> ExternalIdentityProviderConfigurations { get; set; }
         public virtual IEnumerable<IIdentityServerOptionsCustomizer> Customizers { get; set; }
+        public virtual IDataProtector DataProtector { get; set; }
 
         public virtual void Configure(IAppBuilder owinApp)
         {
@@ -102,7 +103,8 @@ namespace Bit.IdentityServer
                     AuthenticationOptions = new AuthenticationOptions
                     {
                         IdentityProviders = ConfigureIdentityProviders
-                    }
+                    },
+                    DataProtector = DataProtector
                 };
 
                 foreach (IIdentityServerOptionsCustomizer customizer in Customizers)

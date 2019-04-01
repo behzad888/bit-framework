@@ -74,10 +74,7 @@ namespace Bit.Owin
 
             owinApp.SetLoggerFactory(DefaultDependencyManager.Current.Resolve<ILoggerFactory>());
 
-            if (DefaultDependencyManager.Current.IsRegistered<IDataProtectionProvider>())
-            {
-                owinApp.SetDataProtectionProvider(DefaultDependencyManager.Current.Resolve<IDataProtectionProvider>());
-            }
+            owinApp.SetDataProtectionProvider(DefaultDependencyManager.Current.Resolve<IDataProtectionProvider>());
 
             DefaultDependencyManager.Current.ResolveAll<IAppEvents>()
                 .ToList()

@@ -5,6 +5,7 @@ using Bit.Owin.Contracts.Metadata;
 using Bit.Owin.Implementations;
 using Bit.Owin.Implementations.Metadata;
 using Bit.Owin.Middlewares;
+using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using System;
 using System.Linq;
@@ -155,6 +156,7 @@ namespace Bit.Core.Contracts
         /// | <see cref="IExceptionToHttpErrorMapper"/> by <see cref="DefaultExceptionToHttpErrorMapper"/>
         /// | <see cref="ITimeZoneManager"/> by <see cref="DefaultTimeZoneManager"/>
         /// | <see cref="IRequestInformationProvider"/> by <see cref="OwinRequestInformationProvider"/>
+        /// | <see cref="IDataProtectionProvider"/> by <see cref="SystemCryptoBasedDataProtectionProvider"/>
         /// </summary>
         public static IDependencyManager RegisterDefaultOwinApp(this IDependencyManager dependencyManager)
         {
@@ -163,6 +165,7 @@ namespace Bit.Core.Contracts
             dependencyManager.Register<IExceptionToHttpErrorMapper, DefaultExceptionToHttpErrorMapper>(lifeCycle: DependencyLifeCycle.SingleInstance, overwriteExciting: false);
             dependencyManager.Register<ITimeZoneManager, DefaultTimeZoneManager>(overwriteExciting: false);
             dependencyManager.Register<IRequestInformationProvider, OwinRequestInformationProvider>(overwriteExciting: false);
+            dependencyManager.Register<IDataProtectionProvider, SystemCryptoBasedDataProtectionProvider>(lifeCycle: DependencyLifeCycle.SingleInstance, overwriteExciting: false);
             dependencyManager.Register<IClientProfileModelProvider, DefaultClientProfileModelProvider>(overwriteExciting: false);
             dependencyManager.Register<IHtmlPageProvider, DefaultHtmlPageProvider>(overwriteExciting: false);
 

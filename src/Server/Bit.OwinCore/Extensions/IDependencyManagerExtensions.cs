@@ -100,7 +100,7 @@ namespace Bit.Core.Contracts
         /// | <see cref="IExceptionToHttpErrorMapper"/> by <see cref="DefaultExceptionToHttpErrorMapper"/>
         /// | <see cref="ITimeZoneManager"/> by <see cref="DefaultTimeZoneManager"/>
         /// | <see cref="IRequestInformationProvider"/> by <see cref="AspNetCoreRequestInformationProvider"/>
-        /// | On Mono, it registers <see cref="IDataProtectionProvider"/> by <see cref="SystemCryptoBasedDataProtectionProvider"/>
+        /// | <see cref="IDataProtectionProvider"/> by <see cref="SystemCryptoBasedDataProtectionProvider"/>
         /// </summary>
         public static IDependencyManager RegisterDefaultAspNetCoreApp(this IDependencyManager dependencyManager)
         {

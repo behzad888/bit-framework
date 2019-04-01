@@ -33,6 +33,8 @@ namespace Bit.Core.Contracts
             dependencyManager.Register<IExternalIdentityProviderConfiguration, MicrosoftIdentityProviderConfiguration>(overwriteExciting: false);
             dependencyManager.Register<IExternalIdentityProviderConfiguration, LinkedInIdentityProviderConfiguration>(overwriteExciting: false);
 
+            dependencyManager.Register<IdentityServer3.Core.Configuration.IDataProtector, DefaultIdentityServerDataProtector>(lifeCycle: DependencyLifeCycle.SingleInstance, overwriteExciting: false);
+
             return dependencyManager;
         }
     }
